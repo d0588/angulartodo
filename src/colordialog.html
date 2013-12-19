@@ -1,0 +1,57 @@
+<div class="dlgbox dlgborder" ng-controller='ColorDialogCtrl'>
+    <style scoped="scoped">
+        .dlgbox{                       
+            width: 200px;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+
+            background-color: silver;
+
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;              
+
+            cursor: default;           
+        }
+        .dlgborder{
+            border: 2px solid #000;
+            border-radius: 6px 6px 0px 0px;        
+        }
+        .dlgheader{
+            margin: 4px auto 4px auto;
+            width: 90%;
+
+            border-bottom: thin solid lightgray;
+
+            text-align: center;
+            text-shadow: 0px 1px 0px #e5e5ee;
+            color: dimgray;
+
+            cursor: move;
+        }
+        .dlgcontentregion{          
+            /*margin: 0 auto 4px auto;
+            width: 90%;            
+            height: 70px;*/
+            text-align: center;            
+        }
+        .coloritem{
+            margin: 2px;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+
+            border: thin solid;
+
+            cursor: pointer;                        
+        }
+    </style>
+    <div class="dlgheader">
+        Варианты цветов
+    </div>
+    <div class="dlgcontentregion">
+        <div class="coloritem" ng-repeat="c in ['#4539d8', '#3a82db', '#3ab0db', '#3adba8', '#3adb68', '#95db3a', '#cedb3a', '#db953a']" style="background-color: {{c}};" ng-click="hdl()">
+        </div>        
+    </div>
+</div>

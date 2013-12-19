@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app='todoApp'>
+    <head>        
+        <meta charset='utf8'>
+        <script src='angular/angular.js'></script>
+        <script src='src/coffeecontroller.js'></script>
+        <script src='src/colordialog.js'></script>
+        <link rel="icon" type="image/png" href="res/todo.png" />
+        <link rel='stylesheet' type='text/css' href='styles.css'>
+        <title>AngularJS'ToDo</title>
+    </head>
+    <body ng-controller='tasklistController'>
+    <center>
+        <table class='maintable' width='480px'>
+            <caption hidden>Angular-задачник</caption>
+            <tr>
+                <td colspan="2" class='pseudocaption aligncenter'>Angular-задачник</td>
+            </tr>
+            <tr style="height: 20px;">
+                <td class='cellstyle aligncenter' width='50px' ng-click='changeFilter()'><img src="res/{{filterVal && 'checked' || 'actual' }}.png" ng-show="filterBeh" width='16px' height='16px'></td>
+                <td class='cellstyle' ng-click='changeSort()' colspan="2"><img src="res/arr{{orderRev && 'd' || 'u'}}.png" ng-show="orderField!=''" width='16px' height='16px'></td>
+            </tr>
+            <tr class='task_{{t.processed}}' ng-repeat='t in tasks | filter:filterBeh | orderBy:orderField:orderRev'>
+                <td style='text-align: center;'>
+                    <input type='checkbox' ng-model='t.processed'>
+                </td>
+                <td ng-dblclick='t.isedit=!t.isedit'>
+                    <label ng-hide='t.isedit'>
+                        {{t.title}}
+                    </label>
+                    <input type='text' class='editfield taskfont' ng-model='t.title' ng-show='t.isedit' />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <form ng-submit='submit()'>
+                        <input type="text" value='' ng-model='newtaskname'>
+                        <input type="submit" value='Добавить задачу' style='border-style: solid; border-color: black; border-width: 1px; background-color: lightskyblue;'>
+                    </form>
+                </td>
+            </tr>
+            <tr><td colspan="2" class='bottompanel'>&nbsp;</td></tr>
+        </table>
+    </center>
+    <div colorable ng-click=''>!!</div>
+</body>
+</html>
